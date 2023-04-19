@@ -1,4 +1,4 @@
-class Solution:
+lass Solution:
     def isValid(self, s: str) -> bool:
       st = []
       if len(s) %2 == 1:
@@ -6,20 +6,10 @@ class Solution:
       for i in s:
         if i in '([{':
           st.append(i)
-        elif i == ')' and (len(st) == 0 or st[-1] != '(' ):
+        elif ( i == ')' and (len(st) == 0 or st[-1] != '(' ) ) or ( i == ']' and (len(st) == 0 or st[-1] != '[' ) ) or ( i == '}' and (len(st) == 0 or st[-1] != '{' )):
           return False
           st.pop(-1)
-        elif i == ']' and (len(st) == 0 or st[-1] != '[' ):
-          return False
-          st.pop(-1)
-        elif i == '}' and (len(st) == 0 or st[-1] != '{' ):
-          return False
-          st.pop(-1)
-        elif i == ')' and st[-1] == '(':
-          st.pop(-1)
-        elif i == ']' and st[-1] == '[':
-          st.pop(-1)
-        elif i == '}' and st[-1] == '{':
+        elif (i == ')' and st[-1] == '(') or (i == ']' and st[-1] == '[') or (i == '}' and st[-1] == '{'):
           st.pop(-1)
       if len(st) != 0:
         return False
