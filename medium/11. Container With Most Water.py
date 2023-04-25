@@ -1,16 +1,16 @@
 class Solution:
     def maxArea(self, height: List[int]) -> int:
-        left = 0
-        right = len(height) -1
+        left = 0                //左邊索引值
+        right = len(height) -1    //右邊索引值
         res = 0
-        while right >= left:
+        while right >= left:     //當左小於右索引值時
             
-            if height[right]>height[left]:
-                res = max(res , (right-left) * height[left])
-                left += 1
+            if height[right]>height[left]:       //右值大於左值
+                res = max(res , (right-left) * height[left])     //結果為兩者索引值相減*右值
+                left += 1                                       //左索引值+1
             else:
-                res = max(res , (right-left) * height[right])
-                right -= 1
+                res = max(res , (right-left) * height[right])     //結果為兩者索引值相減*左值
+                right -= 1                                        //右索引值-1
         return res
 
 '''
